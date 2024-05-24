@@ -30,7 +30,7 @@
                                 <span>Or</span>
                             </div>
                             @if (Session::has('success'))
-                                <div class="alert alert-warning" role="success">
+                                <div class="alert alert-success" role="success">
                                     {{ Session::get('success') }}
                                 </div>
                                 @php
@@ -38,27 +38,27 @@
                                 @endphp
                             @endif
                             <div class="form-group input-group">
-                                <label for="reg-fn">Email</label>
+                                <label for="reg-email">Email</label>
                                 <input class="form-control" type="email" id="reg-email" name="email" required>
                             </div>
                             <div class="form-group input-group">
-                                <label for="reg-fn">Password</label>
+                                <label for="reg-pass">Password</label>
                                 <input class="form-control" type="password" id="reg-pass" name="password" required>
                             </div>
                             <div class="d-flex flex-wrap justify-content-between bottom-content">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1"
                                         name="remember">
-                                    <label class="form-check-label">Remember me</label>
+                                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                 </div>
                                 <a class="lost-pass" href="account-password-recovery.html">Quên mật khẩu?</a>
                             </div>
-                            @if (Session::has('messages'))
+                            @if (Session::has('message'))
                                 <div class="alert alert-warning" role="alert">
-                                    {{ Session::get('messages') }}
+                                    {{ Session::get('message') }}
                                 </div>
                                 @php
-                                    Session::forget('messages');
+                                    Session::forget('message');
                                 @endphp
                             @endif
                             <div class="button">
