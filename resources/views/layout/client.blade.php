@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body ng-app="tcApp" ng-controller="tcCtrl">
     <!--[if lte IE 9]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{route('home')}}"><i class="lni lni-home"></i> Trang chủ</a></li>
+                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Trang chủ</a></li>
                             <li>@yield('title')</li>
                         </ul>
                     </div>
@@ -66,9 +66,11 @@
     <!-- End Breadcrumbs -->
 
 
-    @yield('body')
+    <div ng-controller="viewCtrl">
+        @yield('body')
+    </div>
 
-   @include('layout.footer')
+    @include('layout.footer')
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top">
@@ -77,9 +79,22 @@
 
     <!-- ========================= JS here ========================= -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/angular.min.js') }}"></script>
     <script src="{{ asset('js/tiny-slider.js') }}"></script>
     <script src="{{ asset('js/glightbox.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script>
+        var app = angular.module('tcApp', []);
+        app.controller('tcCtrl', function($scope) {
+
+        })
+        var vewFunction = function($scope) {};
+    </script>
+    @yield('viewFunction');
+    <script>
+        app.controller('viewCtrl', viewFunction);
+    </script>
 </body>
 
 

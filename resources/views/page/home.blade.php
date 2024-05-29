@@ -219,13 +219,13 @@
                             <div class="product-image">
                                 <img src="{{ asset('/images/anhSP/' . $sp->image) }}" alt="{{ $sp->image }}">
                                 <div class="button">
-                                    <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                    <a href="#" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                                 </div>
                             </div>
                             <div class="product-info">
                                 <span class="category">{{ $sp->category->name }}</span>
                                 <h4 class="title">
-                                    <a href="product-grids.html">{{ $sp->name }}</a>
+                                    <a href="{{route('detail',$sp->slug)}}">{{ $sp->name }}</a>
                                 </h4>
                                 <ul class="review">
                                     @for ($i = 0; $i < floor($sp->rating); $i++)
