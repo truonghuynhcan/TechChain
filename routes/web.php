@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
@@ -18,3 +19,7 @@ Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/detail/{slug}', [ProductController::class, 'detail'])->name('detail');
+
+Route::prefix('api')->group(function(){
+    Route::get('/comments/product/{id}', [CommentController::class, 'product']);
+});

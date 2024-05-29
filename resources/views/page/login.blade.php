@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-                    <form class="card login-form" method="post">
+                    <form action="" class="card login-form" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="title">

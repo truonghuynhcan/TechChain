@@ -12,35 +12,35 @@
                         <div class="product-images">
                             <div id="product-images" class="carousel slide">
                                 <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                    <img src="{{ asset('/images/anhSP/' . $sp->image) }}" class="d-block w-100" alt="...">
-                                  </div>
-                                  @foreach ($sp->images as $item)
-                                  <div class="carousel-item">
-                                    <img src="{{ asset('/images/anhSP/' . $item->image) }}" class="d-block w-100" alt="...">
-                                  </div>
-                                  @endforeach
-                                  <div class="carousel-item">
-                                    <img src="..." class="d-block w-100" alt="...">
-                                  </div>
+                                    <div class="carousel-item active">
+                                        <img src="{{ asset('/images/anhSP/' . $sp->image) }}" class="d-block w-100" alt="...">
+                                    </div>
+                                    @foreach ($sp->images as $item)
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('/images/anhSP/' . $item->image) }}" class="d-block w-100" alt="...">
+                                        </div>
+                                    @endforeach
+                                    <div class="carousel-item">
+                                        <img src="..." class="d-block w-100" alt="...">
+                                    </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
-                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Previous</span>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
-                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Next</span>
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
                                 </button>
-                              </div>
+                            </div>
                             <main id="gallery">
                                 <div class="images">
                                     <img src="{{ asset('/images/anhSP/' . $sp->image) }}" data-bs-target="#product-images" data-bs-slide-to="0" class="img" alt="#">
                                     @php
-                                        $i=1;
+                                        $i = 1;
                                     @endphp
                                     @foreach ($sp->images as $item)
-                                        <img src="{{ asset('/images/anhSP/' . $item->image) }}" data-bs-target="#product-images" data-bs-slide-to="{{$i++}}" class="img" alt="#">
+                                        <img src="{{ asset('/images/anhSP/' . $item->image) }}" data-bs-target="#product-images" data-bs-slide-to="{{ $i++ }}" class="img" alt="#">
                                     @endforeach
                                 </div>
                             </main>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            @{{hello}}
+                            @{{ hello }}
                             <h2 class="title">{{ $sp->name }}</h2>
                             <p class="category"><i class="lni lni-tag"></i> Category:<a href="javascript:void(0)">{{ $sp->category->name }}</a></p>
                             <h3 class="price">
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-12">
                                     <div class="button cart-button">
-                                        <button class="btn" ng-click="buy({{$sp->id}})" style="width: 100%;">Add to Cart</button>
+                                        <button class="btn" ng-click="buy({{ $sp->id }})" style="width: 100%;">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -140,62 +140,25 @@
                             <div class="reviews">
                                 <h4 class="title">Latest Reviews</h4>
                                 <!-- Start Single Review -->
-                                <div class="single-review">
+                                <div ng-repeat="bl in dsBL" class="single-review">
                                     <img src="assets/images/blog/comment1.jpg" alt="#">
                                     <div class="review-info">
-                                        <h4>Awesome quality for the price
-                                            <span>Jacob Hammond
-                                            </span>
+                                        <h4>@{{bl.user_fullname}}
+                                            <span>@{{bl.created_at | date:'dd/MM/yyyy'}}</span>
                                         </h4>
                                         <ul class="stars">
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating>=1"><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating>=2"><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating>=3"><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating>=4"><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating==5"><i class="lni lni-star-filled"></i></li>
+                                            <li ng-show="bl.rating<5"><i class="lni lni-star"></i></li>
+                                            <li ng-show="bl.rating<4"><i class="lni lni-star"></i></li>
+                                            <li ng-show="bl.rating<3"><i class="lni lni-star"></i></li>
+                                            <li ng-show="bl.rating<2"><i class="lni lni-star"></i></li>
+                                            <li ng-show="bl.rating<1"><i class="lni lni-star"></i></li>
                                         </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor...</p>
-                                    </div>
-                                </div>
-                                <!-- End Single Review -->
-                                <!-- Start Single Review -->
-                                <div class="single-review">
-                                    <img src="assets/images/blog/comment2.jpg" alt="#">
-                                    <div class="review-info">
-                                        <h4>My husband love his new...
-                                            <span>Alex Jaza
-                                            </span>
-                                        </h4>
-                                        <ul class="stars">
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star"></i></li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor...</p>
-                                    </div>
-                                </div>
-                                <!-- End Single Review -->
-                                <!-- Start Single Review -->
-                                <div class="single-review">
-                                    <img src="assets/images/blog/comment3.jpg" alt="#">
-                                    <div class="review-info">
-                                        <h4>I love the built quality...
-                                            <span>Jacob Hammond
-                                            </span>
-                                        </h4>
-                                        <ul class="stars">
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                            <li><i class="lni lni-star-filled"></i></li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor...</p>
+                                        <p>@{{bl.content}}</p>
                                     </div>
                                 </div>
                                 <!-- End Single Review -->
@@ -266,9 +229,21 @@
 @endsection
 @section('viewFunction')
     <script>
-        viewFunction = function($scope) {
-            $scope.hello='hello mấy chế'
-            $scope.buy= function(id){
+        viewFunction = function($scope, $http) {
+            $scope.dsBL = [];
+            $http.get(`/api/comments/product/{{ $sp->id }}`).then(
+                function(res) {
+                    // thành công
+                    $scope.dsBL=res.data.data;
+                    console.log($scope.$dsBL);
+                },
+                function(res) {
+                    // mẹ thành công
+                    alert('mẹ nè con');
+                }
+            )
+            $scope.hello = 'hello mấy chế'
+            $scope.buy = function(id) {
                 console.log(`mua SP ${id}`);
             }
         }
